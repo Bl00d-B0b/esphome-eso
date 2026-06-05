@@ -1,0 +1,41 @@
+# Example device using ESPHome's built-in `dsmr:` component (>= 2026.2).
+# No custom component / no external_components — ESPHome manages the parser.
+substitutions:
+  name: eso
+  uart_rx_pin: D7
+  request_pin: D5
+
+esphome:
+  name: ${name}
+  friendly_name: ESO Sensor
+
+esp8266:
+  board: d1_mini
+  restore_from_flash: true
+
+logger:
+  baud_rate: 0   # UART0 is used by the P1 reader
+
+api:
+ota:
+  - platform: esphome
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+uart:
+  rx_pin: ${uart_rx_pin}
+  baud_rate: 115200
+  rx_buffer_size: 3072
+
+dsmr:
+  id: dsmr_instance
+  request_pin: ${request_pin}
+  request_interval: 10s
+  max_telegram_length: 4096
+  # For an encrypted P1 feed add: decryption_key: !secret p1_key
+
+# Pick the profile/phase package to expose:
+packages:
+  sensors: !include packages/p1_max_3f.yaml

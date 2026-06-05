@@ -1,0 +1,114 @@
+# ESO P1 — Maksimalus, 1F — sensor package (sensors only).
+# Maintained at github://Bl00d-B0b/esphome-eso. Pure sensor/text_sensor lists for ESPHome's
+# built-in `dsmr:` component. The consumer device declares uart + dsmr hub.
+# Counters in this profile: 20 sensor + 4 text = 24.
+
+sensor:
+  - platform: dsmr
+    # 1-0:1.8.0 — Active energy import (+A)
+    energy_delivered_lux:
+      name: "Energy Delivered Total"
+      id: energy_delivered_lux
+    # 1-0:1.8.1 — Active energy import (+A) rate 1
+    energy_delivered_tariff1:
+      name: "Energy Delivered T#1"
+      id: energy_delivered_tariff1
+    # 1-0:1.8.2 — Active energy import (+A) rate 2
+    energy_delivered_tariff2:
+      name: "Energy Delivered T#2"
+      id: energy_delivered_tariff2
+    # 1-0:1.8.3 — Active energy import (+A) rate 3
+    energy_delivered_tariff3:
+      name: "Energy Delivered T#3"
+      id: energy_delivered_tariff3
+    # 1-0:1.8.4 — Active energy import (+A) rate 4
+    energy_delivered_tariff4:
+      name: "Energy Delivered T#4"
+      id: energy_delivered_tariff4
+    # 1-0:2.8.0 — Active energy export (−A)
+    energy_returned_lux:
+      name: "Energy Returned Total"
+      id: energy_returned_lux
+    # 1-0:3.8.0 — Reactive energy import (+R) (QI+QII)
+    total_imported_energy:
+      name: "Reactive Energy Imported Total"
+      id: total_imported_energy
+    # 1-0:4.8.0 — Reactive energy export (-R) (QIII+QIV)
+    total_exported_energy:
+      name: "Reactive Energy Exported Total"
+      id: total_exported_energy
+    # 1-0:21.7.0 — Instantaneous active import power (+A) in phase L1 [kW]
+    power_delivered_l1:
+      name: "Power Delivered L1"
+      id: power_delivered_l1
+    # 1-0:22.7.0 — Instantaneous active export power (-A) in phase L1 [kW]
+    power_returned_l1:
+      name: "Power Returned L1"
+      id: power_returned_l1
+    # 1-0:23.7.0 — Instantaneous reactive import power (+R) in phase L1 [kvar]
+    reactive_power_delivered_l1:
+      name: "Reactive Power Delivered L1"
+      id: reactive_power_delivered_l1
+    # 1-0:24.7.0 — Instantaneous reactive export power (-R) in phase L1 [kvar]
+    reactive_power_returned_l1:
+      name: "Reactive Power Returned L1"
+      id: reactive_power_returned_l1
+    # 1-0:32.7.0 — Instantaneous voltage L1
+    voltage_l1:
+      name: "Voltage L1"
+      id: voltage_l1
+    # 1-0:31.7.0 — Instantaneous current L1
+    current_l1:
+      name: "Current L1"
+      id: current_l1
+    # 1-0:14.7.0 — Instantaneous net frequency; any phase
+    frequency:
+      name: "Frequency"
+      id: frequency
+    # 1-0:13.7.0 — Instantaneous Power factor (+A/+VA)
+    power_factor:
+      name: "Power Factor"
+      id: power_factor
+    # 1-0:33.7.0 — Instantaneous power factor in phase L1
+    power_factor_l1:
+      name: "Power Factor L1"
+      id: power_factor_l1
+    # 0-0:96.7.21 — Number of power failures in any phase
+    electricity_failures:
+      name: "Electricity Failures"
+      id: electricity_failures
+      entity_category: "diagnostic"
+      icon: mdi:alert
+    # 1-0:32.32.0 — Number of voltage sags in phase L1
+    electricity_sags_l1:
+      name: "Electricity Sags L1"
+      id: electricity_sags_l1
+      entity_category: "diagnostic"
+    # 1-0:32.36.0 — Number of voltage swells in phase L1
+    electricity_swells_l1:
+      name: "Electricity Swells L1"
+      id: electricity_swells_l1
+      entity_category: "diagnostic"
+
+text_sensor:
+  - platform: dsmr
+    # 0-0:1.0.0 — Clock
+    timestamp:
+      name: "Meter Timestamp"
+      id: timestamp
+      entity_category: "diagnostic"
+    # header — DSMR Identification
+    identification:
+      name: "DSMR Identification"
+      id: identification
+      entity_category: "diagnostic"
+    # 0-0:96.1.1 — Equipment identifier
+    equipment_id:
+      name: "Equipment Identifier"
+      id: equipment_id
+      entity_category: "diagnostic"
+    # 0-0:96.13.0 — Consumer Message Text
+    message_long:
+      name: "Consumer Message"
+      id: message_long
+      entity_category: "diagnostic"
