@@ -1,0 +1,4 @@
+# Enforce LF for all text (ESPHome / PlatformIO CI expects LF)
+* text=auto eol=lf
+*.png binary
+*.bin binary

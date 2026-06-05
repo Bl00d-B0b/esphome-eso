@@ -1,0 +1,450 @@
+# ESO P1 — Maksimalus, 3F — sensor package (sensors only).
+# Maintained at github://Bl00d-B0b/esphome-eso. Pure sensor/text_sensor lists for ESPHome's
+# built-in `dsmr:` component. The consumer device declares uart + dsmr hub.
+# Counters in this profile: 88 sensor + 8 text = 96.
+
+sensor:
+  - platform: dsmr
+    # 1-0:1.8.0 — Active energy import (+A)
+    energy_delivered_lux:
+      name: "Energy Delivered Total"
+      id: energy_delivered_lux
+    # 1-0:1.8.1 — Active energy import (+A) rate 1
+    energy_delivered_tariff1:
+      name: "Energy Delivered T#1"
+      id: energy_delivered_tariff1
+    # 1-0:1.8.2 — Active energy import (+A) rate 2
+    energy_delivered_tariff2:
+      name: "Energy Delivered T#2"
+      id: energy_delivered_tariff2
+    # 1-0:1.8.3 — Active energy import (+A) rate 3
+    energy_delivered_tariff3:
+      name: "Energy Delivered T#3"
+      id: energy_delivered_tariff3
+    # 1-0:1.8.4 — Active energy import (+A) rate 4
+    energy_delivered_tariff4:
+      name: "Energy Delivered T#4"
+      id: energy_delivered_tariff4
+    # 1-0:2.8.0 — Active energy export (−A)
+    energy_returned_lux:
+      name: "Energy Returned Total"
+      id: energy_returned_lux
+    # 1-0:2.8.1 — Active energy export (−A) rate 1
+    energy_returned_tariff1:
+      name: "Energy Returned T#1"
+      id: energy_returned_tariff1
+    # 1-0:2.8.2 — Active energy export (−A) rate 2
+    energy_returned_tariff2:
+      name: "Energy Returned T#2"
+      id: energy_returned_tariff2
+    # 1-0:2.8.3 — Active energy export (−A) rate 3
+    energy_returned_tariff3:
+      name: "Energy Returned T#3"
+      id: energy_returned_tariff3
+    # 1-0:2.8.4 — Active energy export (−A) rate 4
+    energy_returned_tariff4:
+      name: "Energy Returned T#4"
+      id: energy_returned_tariff4
+    # 1-0:3.8.0 — Reactive energy import (+R) (QI+QII)
+    total_imported_energy:
+      name: "Reactive Energy Imported Total"
+      id: total_imported_energy
+    # 1-0:3.8.1 — Reactive energy (+R) rate 1
+    reactive_energy_delivered_tariff1:
+      name: "Reactive Energy Imported T#1"
+      id: reactive_energy_delivered_tariff1
+    # 1-0:3.8.2 — Reactive energy (+R) rate 2
+    reactive_energy_delivered_tariff2:
+      name: "Reactive Energy Imported T#2"
+      id: reactive_energy_delivered_tariff2
+    # 1-0:3.8.3 — Reactive energy (+R) rate 3
+    reactive_energy_delivered_tariff3:
+      name: "Reactive Energy Imported T#3"
+      id: reactive_energy_delivered_tariff3
+    # 1-0:3.8.4 — Reactive energy (+R) rate 4
+    reactive_energy_delivered_tariff4:
+      name: "Reactive Energy Imported T#4"
+      id: reactive_energy_delivered_tariff4
+    # 1-0:4.8.0 — Reactive energy export (-R) (QIII+QIV)
+    total_exported_energy:
+      name: "Reactive Energy Exported Total"
+      id: total_exported_energy
+    # 1-0:4.8.1 — Reactive energy (-R) rate 1
+    reactive_energy_returned_tariff1:
+      name: "Reactive Energy Exported T#1"
+      id: reactive_energy_returned_tariff1
+    # 1-0:4.8.2 — Reactive energy (-R) rate 2
+    reactive_energy_returned_tariff2:
+      name: "Reactive Energy Exported T#2"
+      id: reactive_energy_returned_tariff2
+    # 1-0:4.8.3 — Reactive energy (-R) rate 3
+    reactive_energy_returned_tariff3:
+      name: "Reactive Energy Exported T#3"
+      id: reactive_energy_returned_tariff3
+    # 1-0:4.8.4 — Reactive energy (-R) rate 4
+    reactive_energy_returned_tariff4:
+      name: "Reactive Energy Exported T#4"
+      id: reactive_energy_returned_tariff4
+    # 1-0:21.7.0 — Instantaneous active import power (+A) in phase L1 [kW]
+    power_delivered_l1:
+      name: "Power Delivered L1"
+      id: power_delivered_l1
+    # 1-0:41.7.0 — Instantaneous active import power (+A) in phase L2 [kW]
+    power_delivered_l2:
+      name: "Power Delivered L2"
+      id: power_delivered_l2
+    # 1-0:61.7.0 — Instantaneous active import power (+A) in phase L3 [kW]
+    power_delivered_l3:
+      name: "Power Delivered L3"
+      id: power_delivered_l3
+    # 1-0:22.7.0 — Instantaneous active export power (-A) in phase L1 [kW]
+    power_returned_l1:
+      name: "Power Returned L1"
+      id: power_returned_l1
+    # 1-0:42.7.0 — Instantaneous active export power (-A) in phase L2 [kW]
+    power_returned_l2:
+      name: "Power Returned L2"
+      id: power_returned_l2
+    # 1-0:62.7.0 — Instantaneous active export power (-A) in phase L3 [kW]
+    power_returned_l3:
+      name: "Power Returned L3"
+      id: power_returned_l3
+    # 1-0:23.7.0 — Instantaneous reactive import power (+R) in phase L1 [kvar]
+    reactive_power_delivered_l1:
+      name: "Reactive Power Delivered L1"
+      id: reactive_power_delivered_l1
+    # 1-0:43.7.0 — Instantaneous reactive import power (+R) in phase L2 [kvar]
+    reactive_power_delivered_l2:
+      name: "Reactive Power Delivered L2"
+      id: reactive_power_delivered_l2
+    # 1-0:63.7.0 — Instantaneous reactive import power (+R) in phase L3 [kvar]
+    reactive_power_delivered_l3:
+      name: "Reactive Power Delivered L3"
+      id: reactive_power_delivered_l3
+    # 1-0:24.7.0 — Instantaneous reactive export power (-R) in phase L1 [kvar]
+    reactive_power_returned_l1:
+      name: "Reactive Power Returned L1"
+      id: reactive_power_returned_l1
+    # 1-0:44.7.0 — Instantaneous reactive export power (-R) in phase L2 [kvar]
+    reactive_power_returned_l2:
+      name: "Reactive Power Returned L2"
+      id: reactive_power_returned_l2
+    # 1-0:64.7.0 — Instantaneous reactive export power (-R) in phase L3 [kvar]
+    reactive_power_returned_l3:
+      name: "Reactive Power Returned L3"
+      id: reactive_power_returned_l3
+    # 1-0:32.7.0 — Instantaneous voltage L1
+    voltage_l1:
+      name: "Voltage L1"
+      id: voltage_l1
+    # 1-0:32.24.0 — Average voltage L1
+    voltage_avg_l1:
+      name: "Voltage Avg L1"
+      id: voltage_avg_l1
+      entity_category: "diagnostic"
+    # 1-0:31.7.0 — Instantaneous current L1
+    current_l1:
+      name: "Current L1"
+      id: current_l1
+    # 1-0:52.7.0 — Instantaneous voltage L2
+    voltage_l2:
+      name: "Voltage L2"
+      id: voltage_l2
+    # 1-0:52.24.0 — Average voltage L2
+    voltage_avg_l2:
+      name: "Voltage Avg L2"
+      id: voltage_avg_l2
+      entity_category: "diagnostic"
+    # 1-0:51.7.0 — Instantaneous current L2
+    current_l2:
+      name: "Current L2"
+      id: current_l2
+    # 1-0:72.7.0 — Instantaneous voltage L3
+    voltage_l3:
+      name: "Voltage L3"
+      id: voltage_l3
+    # 1-0:72.24.0 — Average voltage L3
+    voltage_avg_l3:
+      name: "Voltage Avg L3"
+      id: voltage_avg_l3
+      entity_category: "diagnostic"
+    # 1-0:71.7.0 — Instantaneous current L3
+    current_l3:
+      name: "Current L3"
+      id: current_l3
+    # 1-0:12.7.0 — Instantaneous voltage (U) [V]
+    voltage:
+      name: "Voltage Average"
+      id: voltage
+    # 1-0:11.7.0 — Instantaneous current [A]
+    current:
+      name: "Current Total"
+      id: current
+    # 1-0:91.7.0 — Instantaneous current in neutral [A]
+    current_n:
+      name: "Current Neutral"
+      id: current_n
+    # 1-0:90.7.0 — Instantaneous current (sum over all phases)
+    current_sum:
+      name: "Current Sum"
+      id: current_sum
+    # 1-0:14.7.0 — Instantaneous net frequency; any phase
+    # NOTE: ESO sends this as float Hz (e.g. 49.5*Hz). Needs dsmr_parser >= 1.9.0
+    # (fix esphome-libs/dsmr_parser#58, merged). On ESPHome that still bundles an
+    # older parser, pull ESPHome PR #16881 via external_components — see README.
+    frequency:
+      name: "Frequency"
+      id: frequency
+    # 1-0:15.7.0 — Instantaneous active power (|+A|+|-A|)
+    abs_power:
+      name: "Active Power"
+      id: abs_power
+    # 1-0:9.7.0 — Instantaneous apparent import power (+VA)
+    apparent_delivery_power:
+      name: "Apparent Power Delivered"
+      id: apparent_delivery_power
+    # 1-0:29.7.0 — Instantaneous apparent import power (+VA) in phase L1
+    apparent_delivery_power_l1:
+      name: "Apparent Power Delivered L1"
+      id: apparent_delivery_power_l1
+    # 1-0:49.7.0 — Instantaneous apparent import power (+VA) in phase L2
+    apparent_delivery_power_l2:
+      name: "Apparent Power Delivered L2"
+      id: apparent_delivery_power_l2
+    # 1-0:69.7.0 — Instantaneous apparent import power (+VA) in phase L3
+    apparent_delivery_power_l3:
+      name: "Apparent Power Delivered L3"
+      id: apparent_delivery_power_l3
+    # 1-0:10.7.0 — Instantaneous apparent export power (-VA)
+    apparent_return_power:
+      name: "Apparent Power Returned"
+      id: apparent_return_power
+    # 1-0:30.7.0 — Instantaneous apparent export power (-VA) in phase L1
+    apparent_return_power_l1:
+      name: "Apparent Power Returned L1"
+      id: apparent_return_power_l1
+    # 1-0:50.7.0 — Instantaneous apparent export power (-VA) in phase L2
+    apparent_return_power_l2:
+      name: "Apparent Power Returned L2"
+      id: apparent_return_power_l2
+    # 1-0:70.7.0 — Instantaneous apparent export power (-VA) in phase L3
+    apparent_return_power_l3:
+      name: "Apparent Power Returned L3"
+      id: apparent_return_power_l3
+    # 1-0:1.24.0 — Average Import Power (+A)
+    active_demand_power:
+      name: "Active Demand Power"
+      id: active_demand_power
+    # 1-0:16.24.0 — Average Net Power (|+A|-|-A|)
+    active_demand_net:
+      name: "Active Demand Net"
+      id: active_demand_net
+    # 1-0:15.24.0 — Average Total Power (|+A|+|-A|)
+    active_demand_abs:
+      name: "Active Demand Abs"
+      id: active_demand_abs
+    # 1-0:13.7.0 — Instantaneous Power factor (+A/+VA)
+    power_factor:
+      name: "Power Factor"
+      id: power_factor
+    # 1-0:33.7.0 — Instantaneous power factor in phase L1
+    power_factor_l1:
+      name: "Power Factor L1"
+      id: power_factor_l1
+    # 1-0:53.7.0 — Instantaneous power factor in phase L2
+    power_factor_l2:
+      name: "Power Factor L2"
+      id: power_factor_l2
+    # 1-0:73.7.0 — Instantaneous power factor in phase L3
+    power_factor_l3:
+      name: "Power Factor L3"
+      id: power_factor_l3
+    # 1-0:13.3.0 — Minimum Power factor (+A/+VA)
+    min_power_factor:
+      name: "Min Power Factor"
+      id: min_power_factor
+      entity_category: "diagnostic"
+    # 1-0:1.4.0 — Demand Register 1 - Active energy import (+A)
+    active_energy_import_current_average_demand:
+      name: "Active Demand Import Avg"
+      id: active_energy_import_current_average_demand
+    # 1-0:2.4.0 — Demand Register 2 - Active energy export (−A)
+    active_energy_export_current_average_demand:
+      name: "Active Demand Export Avg"
+      id: active_energy_export_current_average_demand
+    # 1-0:3.4.0 — Demand Register 3 - Reactive energy import (+R)
+    reactive_energy_import_current_average_demand:
+      name: "Reactive Demand Import Avg"
+      id: reactive_energy_import_current_average_demand
+    # 1-0:4.4.0 — Demand Register 4 - Reactive energy export (-R)
+    reactive_energy_export_current_average_demand:
+      name: "Reactive Demand Export Avg"
+      id: reactive_energy_export_current_average_demand
+    # 1-0:9.4.0 — Demand Register 5 - Apparent energy import (+VA)
+    apparent_energy_import_current_average_demand:
+      name: "Apparent Demand Import Avg"
+      id: apparent_energy_import_current_average_demand
+    # 1-0:10.4.0 — Demand Register 6 - Apparent energy export (-VA)
+    apparent_energy_export_current_average_demand:
+      name: "Apparent Demand Export Avg"
+      id: apparent_energy_export_current_average_demand
+    # 0-0:96.7.21 — Number of power failures in any phase
+    electricity_failures:
+      name: "Electricity Failures"
+      id: electricity_failures
+      entity_category: "diagnostic"
+    # 1-0:32.33.0 — Duration of last voltage sag in phase L1
+    voltage_sag_time_l1:
+      name: "Voltage Sag Duration L1"
+      id: voltage_sag_time_l1
+      entity_category: "diagnostic"
+    # 1-0:52.33.0 — Duration of last voltage sag in phase L2
+    voltage_sag_time_l2:
+      name: "Voltage Sag Duration L2"
+      id: voltage_sag_time_l2
+      entity_category: "diagnostic"
+    # 1-0:72.33.0 — Duration of last voltage sag in phase L3
+    voltage_sag_time_l3:
+      name: "Voltage Sag Duration L3"
+      id: voltage_sag_time_l3
+      entity_category: "diagnostic"
+    # 1-0:32.34.0 — Magnitude of last voltage sag in phase L1
+    voltage_sag_l1:
+      name: "Voltage Sag L1"
+      id: voltage_sag_l1
+      entity_category: "diagnostic"
+    # 1-0:52.34.0 — Magnitude of last voltage sag in phase L2
+    voltage_sag_l2:
+      name: "Voltage Sag L2"
+      id: voltage_sag_l2
+      entity_category: "diagnostic"
+    # 1-0:72.34.0 — Magnitude of last voltage sag in phase L3
+    voltage_sag_l3:
+      name: "Voltage Sag L3"
+      id: voltage_sag_l3
+      entity_category: "diagnostic"
+    # 1-0:32.37.0 — Duration of last voltage swell in phase L1
+    voltage_swell_time_l1:
+      name: "Voltage Swell Duration L1"
+      id: voltage_swell_time_l1
+      entity_category: "diagnostic"
+    # 1-0:52.37.0 — Duration of last voltage swell in phase L2
+    voltage_swell_time_l2:
+      name: "Voltage Swell Duration L2"
+      id: voltage_swell_time_l2
+      entity_category: "diagnostic"
+    # 1-0:72.37.0 — Duration of last voltage swell in phase L3
+    voltage_swell_time_l3:
+      name: "Voltage Swell Duration L3"
+      id: voltage_swell_time_l3
+      entity_category: "diagnostic"
+    # 1-0:32.38.0 — Magnitude of last voltage swell in phase L1
+    voltage_swell_l1:
+      name: "Voltage Swell L1"
+      id: voltage_swell_l1
+      entity_category: "diagnostic"
+    # 1-0:52.38.0 — Magnitude of last voltage swell in phase L2
+    voltage_swell_l2:
+      name: "Voltage Swell L2"
+      id: voltage_swell_l2
+      entity_category: "diagnostic"
+    # 1-0:72.38.0 — Magnitude of last voltage swell in phase L3
+    voltage_swell_l3:
+      name: "Voltage Swell L3"
+      id: voltage_swell_l3
+      entity_category: "diagnostic"
+    # 1-0:32.32.0 — Number of voltage sags in phase L1
+    electricity_sags_l1:
+      name: "Electricity Sags L1"
+      id: electricity_sags_l1
+      entity_category: "diagnostic"
+    # 1-0:52.32.0 — Number of voltage sags in phase L2
+    electricity_sags_l2:
+      name: "Electricity Sags L2"
+      id: electricity_sags_l2
+      entity_category: "diagnostic"
+    # 1-0:72.32.0 — Number of voltage sags in phase L3
+    electricity_sags_l3:
+      name: "Electricity Sags L3"
+      id: electricity_sags_l3
+      entity_category: "diagnostic"
+    # 1-0:32.36.0 — Number of voltage swells in phase L1
+    electricity_swells_l1:
+      name: "Electricity Swells L1"
+      id: electricity_swells_l1
+      entity_category: "diagnostic"
+    # 1-0:52.36.0 — Number of voltage swells in phase L2
+    electricity_swells_l2:
+      name: "Electricity Swells L2"
+      id: electricity_swells_l2
+      entity_category: "diagnostic"
+    # 1-0:72.36.0 — Number of voltage swells in phase L3
+    electricity_swells_l3:
+      name: "Electricity Swells L3"
+      id: electricity_swells_l3
+      entity_category: "diagnostic"
+
+text_sensor:
+  - platform: dsmr
+    # 0-0:1.0.0 — Clock
+    # Kept internal (id only): feeds the "Meter Last Update" template and the
+    # device display; not exposed as its own entity (use Meter Last Update).
+    timestamp:
+      id: timestamp
+      internal: true
+    # 1-0:0.2.0 — Active firmware identifier
+    fw_core_version:
+      name: "FW Core Version"
+      id: fw_core_version
+      entity_category: "diagnostic"
+    # 1-1:0.2.0 — Active firmware identifier 1
+    fw_module_version:
+      name: "FW Module Version"
+      id: fw_module_version
+      entity_category: "diagnostic"
+    # header — DSMR Identification
+    identification:
+      name: "DSMR Identification"
+      id: identification
+      entity_category: "diagnostic"
+    # 0-0:96.1.1 — Equipment identifier
+    equipment_id:
+      name: "Equipment Identifier"
+      id: equipment_id
+      entity_category: "diagnostic"
+    # 0-0:96.13.0 — Consumer Message Text
+    message_long:
+      name: "Consumer Message"
+      id: message_long
+      entity_category: "diagnostic"
+    # 1-0:0.2.8 — Active firmware signature
+    fw_core_checksum:
+      name: "FW Core Checksum"
+      id: fw_core_checksum
+      entity_category: "diagnostic"
+    # 1-1:0.2.8 — Active firmware signature 1
+    fw_module_checksum:
+      name: "FW Module Checksum"
+      id: fw_module_checksum
+      entity_category: "diagnostic"
+  # ── Calculated: ISO-8601 "last update" from the meter clock ──────────────
+  # Converts the raw DSMR clock (0-0:1.0.0, "YYMMDDHHmmssX") into a proper
+  # `timestamp` device_class. UTC offset comes from the DST flag X in the
+  # telegram (Lithuania EET/EEST): S = summer = +03:00, W = winter = +02:00.
+  # Self-contained — depends only on id(timestamp) above, no time source needed.
+  - platform: template
+    name: "Meter Last Update"
+    entity_category: "diagnostic"
+    device_class: timestamp
+    update_interval: 10s
+    lambda: |-
+      std::string ts = id(timestamp).state;
+      if (ts.length() >= 13) {
+        const char *off = (ts[12] == 'S') ? "+03:00" : "+02:00";
+        char buf[32];
+        snprintf(buf, sizeof(buf), "20%c%c-%c%c-%c%cT%c%c:%c%c:%c%c%s",
+          ts[0], ts[1], ts[2], ts[3], ts[4], ts[5],
+          ts[6], ts[7], ts[8], ts[9], ts[10], ts[11], off);
+        return std::string(buf);
+      }
+      return std::string{};
