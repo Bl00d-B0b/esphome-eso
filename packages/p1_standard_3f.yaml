@@ -52,25 +52,32 @@ sensor:
       id: current_l3
     electricity_failures:
       name: "Electricity Failures"
+      id: electricity_failures
       entity_category: "diagnostic"
       icon: mdi:alert
     electricity_sags_l1:
       name: "Electricity Sags L1"
+      id: electricity_sags_l1
       entity_category: "diagnostic"
     electricity_sags_l2:
       name: "Electricity Sags L2"
+      id: electricity_sags_l2
       entity_category: "diagnostic"
     electricity_sags_l3:
       name: "Electricity Sags L3"
+      id: electricity_sags_l3
       entity_category: "diagnostic"
     electricity_swells_l1:
       name: "Electricity Swells L1"
+      id: electricity_swells_l1
       entity_category: "diagnostic"
     electricity_swells_l2:
       name: "Electricity Swells L2"
+      id: electricity_swells_l2
       entity_category: "diagnostic"
     electricity_swells_l3:
       name: "Electricity Swells L3"
+      id: electricity_swells_l3
       entity_category: "diagnostic"
 
 text_sensor:
@@ -81,10 +88,13 @@ text_sensor:
       entity_category: "diagnostic"
     identification:
       name: "DSMR Identification"
+      id: identification
       entity_category: "diagnostic"
     equipment_id:
       name: "Equipment Identifier"
+      id: equipment_id
       entity_category: "diagnostic"
     message_long:
       name: "Consumer Message"
+      id: message_long
       entity_category: "diagnostic"
