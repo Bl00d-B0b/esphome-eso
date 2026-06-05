@@ -1,9 +1,8 @@
 # esphome-eso — sensor review (96 counters, built-in `dsmr` platform)
 
-Base unit/device-class/state-class come from ESPHome's built-in `dsmr` component.
-Columns below show package-level overrides (unit/accuracy/filter) where set.
+Base unit/device-class come from ESPHome's built-in `dsmr`; overrides shown below.
 
-| key | id | name | OBIS | unit* | acc* | filter | icon | cat |
+| key | id | name | OBIS | unit | acc | filter | icon | cat |
 |---|---|---|---|---|---|---|---|---|
 | energy_delivered_lux | energy_delivered | Energy Delivered Total | 1-0:1.8.0 | — | — | — | — | — |
 | energy_delivered_tariff1 | energy_delivered_t1 | Energy Delivered T#1 | 1-0:1.8.1 | — | — | — | — | — |
@@ -87,8 +86,6 @@ Columns below show package-level overrides (unit/accuracy/filter) where set.
 | voltage_swell_l1 | — | Voltage Swell L1 | 1-0:32.38.0 | — | — | — | — | diag |
 | voltage_swell_l2 | — | Voltage Swell L2 | 1-0:52.38.0 | — | — | — | — | diag |
 | voltage_swell_l3 | — | Voltage Swell L3 | 1-0:72.38.0 | — | — | — | — | diag |
-| fw_core_version | — | FW Core Version | 1-0:0.2.0 | — | — | — | — | diag |
-| fw_module_version | — | FW Module Version | 1-1:0.2.0 | — | — | — | — | diag |
 | electricity_sags_l1 | — | Electricity Sags L1 | 1-0:32.32.0 | — | — | — | — | diag |
 | electricity_sags_l2 | — | Electricity Sags L2 | 1-0:52.32.0 | — | — | — | — | diag |
 | electricity_sags_l3 | — | Electricity Sags L3 | 1-0:72.32.0 | — | — | — | — | diag |
@@ -96,10 +93,12 @@ Columns below show package-level overrides (unit/accuracy/filter) where set.
 | electricity_swells_l2 | — | Electricity Swells L2 | 1-0:52.36.0 | — | — | — | — | diag |
 | electricity_swells_l3 | — | Electricity Swells L3 | 1-0:72.36.0 | — | — | — | — | diag |
 | timestamp | meter_timestamp_raw | Meter Timestamp | 0-0:1.0.0 | — | — | — | — | diag |
+| fw_core_version | — | FW Core Version | 1-0:0.2.0 | — | — | — | — | diag |
+| fw_module_version | — | FW Module Version | 1-1:0.2.0 | — | — | — | — | diag |
 | identification | — | DSMR Identification | (P1 header) | — | — | — | — | diag |
 | equipment_id | — | Equipment Identifier | 0-0:96.1.1 | — | — | — | — | diag |
 | message_long | — | Consumer Message | ? | — | — | — | — | diag |
 | fw_core_checksum | — | FW Core Checksum | 1-0:0.2.8 | — | — | — | — | diag |
 | fw_module_checksum | — | FW Module Checksum | 1-1:0.2.8 | — | — | — | — | diag |
 
-\* blank = inherited from built-in `dsmr`. Total: 96
+Total: 96

@@ -1,7 +1,7 @@
 # ESO P1 — Maksimalus, 3F — sensor package (sensors only).
 # Maintained at github://Bl00d-B0b/esphome-eso. Pure sensor/text_sensor lists for ESPHome's
 # built-in `dsmr:` component. The consumer device declares uart + dsmr hub.
-# Counters in this profile: 90 sensor + 6 text = 96.
+# Counters in this profile: 88 sensor + 8 text = 96.
 
 sensor:
   - platform: dsmr
@@ -297,12 +297,6 @@ sensor:
     voltage_swell_l3:
       name: "Voltage Swell L3"
       entity_category: "diagnostic"
-    fw_core_version:
-      name: "FW Core Version"
-      entity_category: "diagnostic"
-    fw_module_version:
-      name: "FW Module Version"
-      entity_category: "diagnostic"
     electricity_sags_l1:
       name: "Electricity Sags L1"
       entity_category: "diagnostic"
@@ -327,6 +321,12 @@ text_sensor:
     timestamp:
       name: "Meter Timestamp"
       id: meter_timestamp_raw
+      entity_category: "diagnostic"
+    fw_core_version:
+      name: "FW Core Version"
+      entity_category: "diagnostic"
+    fw_module_version:
+      name: "FW Module Version"
       entity_category: "diagnostic"
     identification:
       name: "DSMR Identification"
