@@ -8,27 +8,27 @@ sensor:
     # 1-0:1.8.0 — Active energy import (+A)
     energy_delivered_lux:
       name: "Energy Delivered Total"
-      id: energy_delivered
+      id: energy_delivered_lux
     # 1-0:1.8.1 — Active energy import (+A) rate 1
     energy_delivered_tariff1:
       name: "Energy Delivered T#1"
-      id: energy_delivered_t1
+      id: energy_delivered_tariff1
     # 1-0:1.8.2 — Active energy import (+A) rate 2
     energy_delivered_tariff2:
       name: "Energy Delivered T#2"
-      id: energy_delivered_t2
+      id: energy_delivered_tariff2
     # 1-0:1.8.3 — Active energy import (+A) rate 3
     energy_delivered_tariff3:
       name: "Energy Delivered T#3"
-      id: energy_delivered_t3
+      id: energy_delivered_tariff3
     # 1-0:1.8.4 — Active energy import (+A) rate 4
     energy_delivered_tariff4:
       name: "Energy Delivered T#4"
-      id: energy_delivered_t4
+      id: energy_delivered_tariff4
     # 1-0:2.8.0 — Active energy export (−A)
     energy_returned_lux:
       name: "Energy Returned Total"
-      id: energy_returned
+      id: energy_returned_lux
     # 1-0:21.7.0 — Instantaneous active import power (+A) in phase L1 [kW]
     power_delivered_l1:
       name: "Power Delivered L1"
@@ -107,7 +107,7 @@ text_sensor:
     # 0-0:1.0.0 — Clock
     timestamp:
       name: "Meter Timestamp"
-      id: meter_timestamp_raw
+      id: timestamp
       entity_category: "diagnostic"
     # header — DSMR Identification
     identification:

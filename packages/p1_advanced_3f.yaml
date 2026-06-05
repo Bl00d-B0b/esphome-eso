@@ -8,27 +8,27 @@ sensor:
     # 1-0:1.8.0 — Active energy import (+A)
     energy_delivered_lux:
       name: "Energy Delivered Total"
-      id: energy_delivered
+      id: energy_delivered_lux
     # 1-0:1.8.1 — Active energy import (+A) rate 1
     energy_delivered_tariff1:
       name: "Energy Delivered T#1"
-      id: energy_delivered_t1
+      id: energy_delivered_tariff1
     # 1-0:1.8.2 — Active energy import (+A) rate 2
     energy_delivered_tariff2:
       name: "Energy Delivered T#2"
-      id: energy_delivered_t2
+      id: energy_delivered_tariff2
     # 1-0:1.8.3 — Active energy import (+A) rate 3
     energy_delivered_tariff3:
       name: "Energy Delivered T#3"
-      id: energy_delivered_t3
+      id: energy_delivered_tariff3
     # 1-0:1.8.4 — Active energy import (+A) rate 4
     energy_delivered_tariff4:
       name: "Energy Delivered T#4"
-      id: energy_delivered_t4
+      id: energy_delivered_tariff4
     # 1-0:2.8.0 — Active energy export (−A)
     energy_returned_lux:
       name: "Energy Returned Total"
-      id: energy_returned
+      id: energy_returned_lux
     # 1-0:3.8.0 — Reactive energy import (+R) (QI+QII)
     total_imported_energy:
       name: "Reactive Energy Imported Total"
@@ -64,27 +64,27 @@ sensor:
     # 1-0:23.7.0 — Instantaneous reactive import power (+R) in phase L1 [kvar]
     reactive_power_delivered_l1:
       name: "Reactive Power Delivered L1"
-      id: reactive_delivery_l1
+      id: reactive_power_delivered_l1
     # 1-0:43.7.0 — Instantaneous reactive import power (+R) in phase L2 [kvar]
     reactive_power_delivered_l2:
       name: "Reactive Power Delivered L2"
-      id: reactive_delivery_l2
+      id: reactive_power_delivered_l2
     # 1-0:63.7.0 — Instantaneous reactive import power (+R) in phase L3 [kvar]
     reactive_power_delivered_l3:
       name: "Reactive Power Delivered L3"
-      id: reactive_delivery_l3
+      id: reactive_power_delivered_l3
     # 1-0:24.7.0 — Instantaneous reactive export power (-R) in phase L1 [kvar]
     reactive_power_returned_l1:
       name: "Reactive Power Returned L1"
-      id: reactive_return_l1
+      id: reactive_power_returned_l1
     # 1-0:44.7.0 — Instantaneous reactive export power (-R) in phase L2 [kvar]
     reactive_power_returned_l2:
       name: "Reactive Power Returned L2"
-      id: reactive_return_l2
+      id: reactive_power_returned_l2
     # 1-0:64.7.0 — Instantaneous reactive export power (-R) in phase L3 [kvar]
     reactive_power_returned_l3:
       name: "Reactive Power Returned L3"
-      id: reactive_return_l3
+      id: reactive_power_returned_l3
     # 1-0:32.7.0 — Instantaneous voltage L1
     voltage_l1:
       name: "Voltage L1"
@@ -112,7 +112,7 @@ sensor:
     # 1-0:14.7.0 — Instantaneous net frequency; any phase
     frequency:
       name: "Frequency"
-      id: grid_frequency
+      id: frequency
     # 1-0:13.7.0 — Instantaneous Power factor (+A/+VA)
     power_factor:
       name: "Power Factor"
@@ -171,7 +171,7 @@ text_sensor:
     # 0-0:1.0.0 — Clock
     timestamp:
       name: "Meter Timestamp"
-      id: meter_timestamp_raw
+      id: timestamp
       entity_category: "diagnostic"
     # header — DSMR Identification
     identification:
