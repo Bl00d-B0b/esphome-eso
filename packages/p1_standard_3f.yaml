@@ -5,76 +5,98 @@
 
 sensor:
   - platform: dsmr
+    # 1-0:1.8.0 — Active energy import (+A)
     energy_delivered_lux:
       name: "Energy Delivered Total"
       id: energy_delivered
+    # 1-0:1.8.1 — Active energy import (+A) rate 1
     energy_delivered_tariff1:
       name: "Energy Delivered T#1"
       id: energy_delivered_t1
+    # 1-0:1.8.2 — Active energy import (+A) rate 2
     energy_delivered_tariff2:
       name: "Energy Delivered T#2"
       id: energy_delivered_t2
+    # 1-0:1.8.3 — Active energy import (+A) rate 3
     energy_delivered_tariff3:
       name: "Energy Delivered T#3"
       id: energy_delivered_t3
+    # 1-0:1.8.4 — Active energy import (+A) rate 4
     energy_delivered_tariff4:
       name: "Energy Delivered T#4"
       id: energy_delivered_t4
+    # 1-0:2.8.0 — Active energy export (−A)
     energy_returned_lux:
       name: "Energy Returned Total"
       id: energy_returned
+    # 1-0:21.7.0 — Instantaneous active import power (+A) in phase L1 [kW]
     power_delivered_l1:
       name: "Power Delivered L1"
       id: power_delivered_l1
+    # 1-0:41.7.0 — Instantaneous active import power (+A) in phase L2 [kW]
     power_delivered_l2:
       name: "Power Delivered L2"
       id: power_delivered_l2
+    # 1-0:61.7.0 — Instantaneous active import power (+A) in phase L3 [kW]
     power_delivered_l3:
       name: "Power Delivered L3"
       id: power_delivered_l3
+    # 1-0:32.7.0 — Instantaneous voltage L1
     voltage_l1:
       name: "Voltage L1"
       id: voltage_l1
+    # 1-0:31.7.0 — Instantaneous current L1
     current_l1:
       name: "Current L1"
       id: current_l1
+    # 1-0:52.7.0 — Instantaneous voltage L2
     voltage_l2:
       name: "Voltage L2"
       id: voltage_l2
+    # 1-0:51.7.0 — Instantaneous current L2
     current_l2:
       name: "Current L2"
       id: current_l2
+    # 1-0:72.7.0 — Instantaneous voltage L3
     voltage_l3:
       name: "Voltage L3"
       id: voltage_l3
+    # 1-0:71.7.0 — Instantaneous current L3
     current_l3:
       name: "Current L3"
       id: current_l3
+    # 0-0:96.7.21 — Number of power failures in any phase
     electricity_failures:
       name: "Electricity Failures"
       id: electricity_failures
       entity_category: "diagnostic"
       icon: mdi:alert
+    # 1-0:32.32.0 — Number of voltage sags in phase L1
     electricity_sags_l1:
       name: "Electricity Sags L1"
       id: electricity_sags_l1
       entity_category: "diagnostic"
+    # 1-0:52.32.0 — Number of voltage sags in phase L2
     electricity_sags_l2:
       name: "Electricity Sags L2"
       id: electricity_sags_l2
       entity_category: "diagnostic"
+    # 1-0:72.32.0 — Number of voltage sags in phase L3
     electricity_sags_l3:
       name: "Electricity Sags L3"
       id: electricity_sags_l3
       entity_category: "diagnostic"
+    # 1-0:32.36.0 — Number of voltage swells in phase L1
     electricity_swells_l1:
       name: "Electricity Swells L1"
       id: electricity_swells_l1
       entity_category: "diagnostic"
+    # 1-0:52.36.0 — Number of voltage swells in phase L2
     electricity_swells_l2:
       name: "Electricity Swells L2"
       id: electricity_swells_l2
       entity_category: "diagnostic"
+    # 1-0:72.36.0 — Number of voltage swells in phase L3
     electricity_swells_l3:
       name: "Electricity Swells L3"
       id: electricity_swells_l3
@@ -82,18 +104,22 @@ sensor:
 
 text_sensor:
   - platform: dsmr
+    # 0-0:1.0.0 — Clock
     timestamp:
       name: "Meter Timestamp"
       id: meter_timestamp_raw
       entity_category: "diagnostic"
+    # header — DSMR Identification
     identification:
       name: "DSMR Identification"
       id: identification
       entity_category: "diagnostic"
+    # 0-0:96.1.1 — Equipment identifier
     equipment_id:
       name: "Equipment Identifier"
       id: equipment_id
       entity_category: "diagnostic"
+    # 0-0:96.13.0 — Consumer Message Text
     message_long:
       name: "Consumer Message"
       id: message_long

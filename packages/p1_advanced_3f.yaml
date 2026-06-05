@@ -5,156 +5,162 @@
 
 sensor:
   - platform: dsmr
+    # 1-0:1.8.0 — Active energy import (+A)
     energy_delivered_lux:
       name: "Energy Delivered Total"
       id: energy_delivered
+    # 1-0:1.8.1 — Active energy import (+A) rate 1
     energy_delivered_tariff1:
       name: "Energy Delivered T#1"
       id: energy_delivered_t1
+    # 1-0:1.8.2 — Active energy import (+A) rate 2
     energy_delivered_tariff2:
       name: "Energy Delivered T#2"
       id: energy_delivered_t2
+    # 1-0:1.8.3 — Active energy import (+A) rate 3
     energy_delivered_tariff3:
       name: "Energy Delivered T#3"
       id: energy_delivered_t3
+    # 1-0:1.8.4 — Active energy import (+A) rate 4
     energy_delivered_tariff4:
       name: "Energy Delivered T#4"
       id: energy_delivered_t4
+    # 1-0:2.8.0 — Active energy export (−A)
     energy_returned_lux:
       name: "Energy Returned Total"
       id: energy_returned
+    # 1-0:3.8.0 — Reactive energy import (+R) (QI+QII)
     total_imported_energy:
       name: "Reactive Energy Imported Total"
       id: total_imported_energy
+    # 1-0:4.8.0 — Reactive energy export (-R) (QIII+QIV)
     total_exported_energy:
       name: "Reactive Energy Exported Total"
       id: total_exported_energy
+    # 1-0:21.7.0 — Instantaneous active import power (+A) in phase L1 [kW]
     power_delivered_l1:
       name: "Power Delivered L1"
       id: power_delivered_l1
+    # 1-0:41.7.0 — Instantaneous active import power (+A) in phase L2 [kW]
     power_delivered_l2:
       name: "Power Delivered L2"
       id: power_delivered_l2
+    # 1-0:61.7.0 — Instantaneous active import power (+A) in phase L3 [kW]
     power_delivered_l3:
       name: "Power Delivered L3"
       id: power_delivered_l3
+    # 1-0:22.7.0 — Instantaneous active export power (-A) in phase L1 [kW]
     power_returned_l1:
       name: "Power Returned L1"
       id: power_returned_l1
+    # 1-0:42.7.0 — Instantaneous active export power (-A) in phase L2 [kW]
     power_returned_l2:
       name: "Power Returned L2"
       id: power_returned_l2
+    # 1-0:62.7.0 — Instantaneous active export power (-A) in phase L3 [kW]
     power_returned_l3:
       name: "Power Returned L3"
       id: power_returned_l3
+    # 1-0:23.7.0 — Instantaneous reactive import power (+R) in phase L1 [kvar]
     reactive_power_delivered_l1:
       name: "Reactive Power Delivered L1"
       id: reactive_delivery_l1
-      unit_of_measurement: "var"
-      accuracy_decimals: 0
-      filters:
-        - multiply: 1000
+    # 1-0:43.7.0 — Instantaneous reactive import power (+R) in phase L2 [kvar]
     reactive_power_delivered_l2:
       name: "Reactive Power Delivered L2"
       id: reactive_delivery_l2
-      unit_of_measurement: "var"
-      accuracy_decimals: 0
-      filters:
-        - multiply: 1000
+    # 1-0:63.7.0 — Instantaneous reactive import power (+R) in phase L3 [kvar]
     reactive_power_delivered_l3:
       name: "Reactive Power Delivered L3"
       id: reactive_delivery_l3
-      unit_of_measurement: "var"
-      accuracy_decimals: 0
-      filters:
-        - multiply: 1000
+    # 1-0:24.7.0 — Instantaneous reactive export power (-R) in phase L1 [kvar]
     reactive_power_returned_l1:
       name: "Reactive Power Returned L1"
       id: reactive_return_l1
-      unit_of_measurement: "var"
-      accuracy_decimals: 0
-      filters:
-        - multiply: 1000
+    # 1-0:44.7.0 — Instantaneous reactive export power (-R) in phase L2 [kvar]
     reactive_power_returned_l2:
       name: "Reactive Power Returned L2"
       id: reactive_return_l2
-      unit_of_measurement: "var"
-      accuracy_decimals: 0
-      filters:
-        - multiply: 1000
+    # 1-0:64.7.0 — Instantaneous reactive export power (-R) in phase L3 [kvar]
     reactive_power_returned_l3:
       name: "Reactive Power Returned L3"
       id: reactive_return_l3
-      unit_of_measurement: "var"
-      accuracy_decimals: 0
-      filters:
-        - multiply: 1000
+    # 1-0:32.7.0 — Instantaneous voltage L1
     voltage_l1:
       name: "Voltage L1"
       id: voltage_l1
+    # 1-0:31.7.0 — Instantaneous current L1
     current_l1:
       name: "Current L1"
       id: current_l1
+    # 1-0:52.7.0 — Instantaneous voltage L2
     voltage_l2:
       name: "Voltage L2"
       id: voltage_l2
+    # 1-0:51.7.0 — Instantaneous current L2
     current_l2:
       name: "Current L2"
       id: current_l2
+    # 1-0:72.7.0 — Instantaneous voltage L3
     voltage_l3:
       name: "Voltage L3"
       id: voltage_l3
+    # 1-0:71.7.0 — Instantaneous current L3
     current_l3:
       name: "Current L3"
       id: current_l3
+    # 1-0:14.7.0 — Instantaneous net frequency; any phase
     frequency:
       name: "Frequency"
       id: grid_frequency
+    # 1-0:13.7.0 — Instantaneous Power factor (+A/+VA)
     power_factor:
       name: "Power Factor"
       id: power_factor
-      filters:
-        - multiply: 100
+    # 1-0:33.7.0 — Instantaneous power factor in phase L1
     power_factor_l1:
       name: "Power Factor L1"
       id: power_factor_l1
-      filters:
-        - multiply: 100
+    # 1-0:53.7.0 — Instantaneous power factor in phase L2
     power_factor_l2:
       name: "Power Factor L2"
       id: power_factor_l2
-      filters:
-        - multiply: 100
+    # 1-0:73.7.0 — Instantaneous power factor in phase L3
     power_factor_l3:
       name: "Power Factor L3"
       id: power_factor_l3
-      filters:
-        - multiply: 100
+    # 0-0:96.7.21 — Number of power failures in any phase
     electricity_failures:
       name: "Electricity Failures"
       id: electricity_failures
       entity_category: "diagnostic"
       icon: mdi:alert
+    # 1-0:32.32.0 — Number of voltage sags in phase L1
     electricity_sags_l1:
       name: "Electricity Sags L1"
       id: electricity_sags_l1
       entity_category: "diagnostic"
+    # 1-0:52.32.0 — Number of voltage sags in phase L2
     electricity_sags_l2:
       name: "Electricity Sags L2"
       id: electricity_sags_l2
       entity_category: "diagnostic"
+    # 1-0:72.32.0 — Number of voltage sags in phase L3
     electricity_sags_l3:
       name: "Electricity Sags L3"
       id: electricity_sags_l3
       entity_category: "diagnostic"
+    # 1-0:32.36.0 — Number of voltage swells in phase L1
     electricity_swells_l1:
       name: "Electricity Swells L1"
       id: electricity_swells_l1
       entity_category: "diagnostic"
+    # 1-0:52.36.0 — Number of voltage swells in phase L2
     electricity_swells_l2:
       name: "Electricity Swells L2"
       id: electricity_swells_l2
       entity_category: "diagnostic"
+    # 1-0:72.36.0 — Number of voltage swells in phase L3
     electricity_swells_l3:
       name: "Electricity Swells L3"
       id: electricity_swells_l3
@@ -162,18 +168,22 @@ sensor:
 
 text_sensor:
   - platform: dsmr
+    # 0-0:1.0.0 — Clock
     timestamp:
       name: "Meter Timestamp"
       id: meter_timestamp_raw
       entity_category: "diagnostic"
+    # header — DSMR Identification
     identification:
       name: "DSMR Identification"
       id: identification
       entity_category: "diagnostic"
+    # 0-0:96.1.1 — Equipment identifier
     equipment_id:
       name: "Equipment Identifier"
       id: equipment_id
       entity_category: "diagnostic"
+    # 0-0:96.13.0 — Consumer Message Text
     message_long:
       name: "Consumer Message"
       id: message_long
