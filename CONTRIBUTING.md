@@ -13,8 +13,9 @@ Contributions are welcome — new meter profiles, fixes, better names/units, doc
 
 1. **Fork** the repo and branch off **`dev`**.
 2. Make your change. If you touch the sensor packages, keep them consistent
-   (one entry per OBIS object; unique `id:`s; follow ESO unit conventions —
-   reactive → `var` ×1000, apparent ×1000, power factor ×100).
+   (one entry per OBIS object; unique `id:`s; keys must match ESPHome's built-in
+   `dsmr` platform; follow ESO unit conventions — reactive → `var` ×1000,
+   apparent ×1000, power factor ×100).
 3. Open a **pull request targeting `dev`** (the default branch).
 4. After review/testing on `dev`, the maintainer **publishes** by merging
    `dev` → `master`. Released configs always come from `master`.
@@ -23,8 +24,7 @@ Contributions are welcome — new meter profiles, fixes, better names/units, doc
 
 Just say so in an issue or PR — you're welcome to join.
 
-## Note on bundled code
+## No bundled code
 
-`components/dsmr_eso/` is GPLv3 (rebuilt from ESPHome's official `dsmr`
-component) and bundles the MIT `arduino-dsmr` parser under `dsmr/`. See
-`NOTICE` and please preserve the attribution there.
+This repo ships only ESPHome YAML packages; the meter parsing is ESPHome's
+built-in `dsmr` component. There is no vendored C++ to maintain.

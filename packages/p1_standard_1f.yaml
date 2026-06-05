@@ -1,10 +1,10 @@
 # ESO P1 — Standartinis, 1F — sensor package (sensors only).
-# Maintained at github://Bl00d-B0b/esphome-eso. Pure sensor/text_sensor lists; the consumer device
-# must declare external_components (dsmr_eso), uart and the dsmr_eso hub.
+# Maintained at github://Bl00d-B0b/esphome-eso. Pure sensor/text_sensor lists for ESPHome's
+# built-in `dsmr:` component. The consumer device declares uart + dsmr hub.
 # Counters in this profile: 12 sensor + 4 text = 16.
 
 sensor:
-  - platform: dsmr_eso
+  - platform: dsmr
     energy_delivered_lux:
       name: "Energy Delivered Total"
       id: energy_delivered
@@ -44,7 +44,7 @@ sensor:
       entity_category: "diagnostic"
 
 text_sensor:
-  - platform: dsmr_eso
+  - platform: dsmr
     timestamp:
       name: "Meter Timestamp"
       id: meter_timestamp_raw
@@ -55,6 +55,6 @@ text_sensor:
     equipment_id:
       name: "Equipment Identifier"
       entity_category: "diagnostic"
-    consumer_msg:
+    message_long:
       name: "Consumer Message"
       entity_category: "diagnostic"

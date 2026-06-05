@@ -1,12 +1,13 @@
 # esphome-eso
 
-Self-contained ESPHome integration for **ESO** (Lithuania) smart electricity
-meters over the **P1** port. Sensor definitions are maintained here as
-ready-to-include packages, one per **profile × phase**.
+Ready-to-include ESPHome sensor packages for **ESO** (Lithuania) smart
+electricity meters on the **P1** port, one per **profile × phase** — covering
+the full **Maksimalus (3-phase)** profile of **96 counters**.
 
-Everything needed to build is vendored into this repo — the `dsmr_eso`
-component and the MIT-licensed DSMR parser are copied into `components/`
-(no `github://` external_components reference inside the repo itself).
+No custom component and no vendored code: these packages drive ESPHome's
+**built-in [`dsmr`](https://esphome.io/components/sensor/dsmr) component**
+(ESPHome ≥ 2026.2), which already parses the full ESO field set via the
+maintained [`esphome-libs/dsmr_parser`](https://github.com/esphome-libs/dsmr_parser).
 
 ## Packages (6)
 
@@ -19,8 +20,7 @@ component and the MIT-licensed DSMR parser are copied into `components/`
 ¹ CTVT meters use the same set as 3-phase.
 
 Each package is **sensors-only** (`sensor:` + `text_sensor:` with
-`platform: dsmr_eso`). The consuming device supplies the component, `uart`,
-and the `dsmr_eso` hub.
+`platform: dsmr`). The device supplies `uart` and the `dsmr:` hub.
 
 ## Use from a device (pull from GitHub)
 
@@ -29,16 +29,12 @@ substitutions:
   uart_rx_pin: D7
   request_pin: D5
 
-external_components:
-  - source: github://Bl00d-B0b/esphome-eso@master
-    components: [dsmr_eso]
-
 uart:
   rx_pin: ${uart_rx_pin}
   baud_rate: 115200
   rx_buffer_size: 3072
 
-dsmr_eso:
+dsmr:
   id: dsmr_instance
   request_pin: ${request_pin}
   request_interval: 10s
@@ -48,37 +44,24 @@ packages:
   sensors: github://Bl00d-B0b/esphome-eso/packages/p1_max_3f.yaml@master
 ```
 
-For an encrypted P1 feed, add `decryption_key:` under `dsmr_eso:`.
-See `example.yaml` for a full local self-test build.
+Encrypted feed? add `decryption_key:` under `dsmr:`. See `example.yaml` for a
+full buildable device.
 
-## Layout
+## Data source
 
-```
-components/dsmr_eso/        vendored ESPHome component
-  dsmr.h, dsmr/*            vendored MIT DSMR parser (matthijskooijman)
-packages/p1_<profile>_<phase>.yaml   the six sensor packages
-example.yaml               local self-test device
-REVIEW.md                  per-sensor review (ids/names/units/icons)
-```
-
-## Build dependency
-
-`rweather/Crypto` (MIT, AES/GCM) is pulled from the PlatformIO registry at
-compile time — a normal versioned library, not a source reference.
-
-## Licensing
-
-GPLv3 (see `LICENSE`). The component is rebuilt from ESPHome's official `dsmr`
-component (MIT Python / GPLv3 C++); the DSMR parser is MIT (Matthijs Kooijman);
-Crypto is MIT. No unlicensed code is bundled — see `NOTICE`.
+Field/OBIS mapping follows ESO's official P1 data model:
+**`p1-duomenu-modelis.xlsx`** —
+<https://www.eso.lt/web/storage/public/uploads/2025/07/p1-duomenu-modelis.xlsx>
+(2025-07). The document itself is not redistributed here; our derived
+OBIS → sensor table is in [`REVIEW.md`](REVIEW.md).
 
 ## Contributing
 
 PRs welcome — and if you'd like to help maintain, you're welcome to join.
-Two branches: contributions land on **`dev`**, then get published to **`master`**
-(which devices reference). See [CONTRIBUTING.md](CONTRIBUTING.md).
+Contributions land on **`dev`**, then get published to **`master`** (which
+devices reference). See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Credits
+## License
 
-The ESPHome project and its `dsmr` component authors (@glmnet, @zuidwijk),
-Matthijs Kooijman (arduino-dsmr, MIT), and rweather (Crypto, MIT).
+MIT (`LICENSE`). These are ESPHome YAML packages; the `dsmr` component and its
+parser are part of ESPHome / `esphome-libs` and keep their own licenses.
