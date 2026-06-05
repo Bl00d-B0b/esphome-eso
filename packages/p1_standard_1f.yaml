@@ -1,0 +1,60 @@
+# ESO P1 — Standartinis, 1F — sensor package (sensors only).
+# Maintained at github://Bl00d-B0b/esphome-eso. Pure sensor/text_sensor lists; the consumer device
+# must declare external_components (dsmr_eso), uart and the dsmr_eso hub.
+# Counters in this profile: 12 sensor + 4 text = 16.
+
+sensor:
+  - platform: dsmr_eso
+    energy_delivered_lux:
+      name: "Energy Delivered Total"
+      id: energy_delivered
+    energy_delivered_tariff1:
+      name: "Energy Delivered T#1"
+      id: energy_delivered_t1
+    energy_delivered_tariff2:
+      name: "Energy Delivered T#2"
+      id: energy_delivered_t2
+    energy_delivered_tariff3:
+      name: "Energy Delivered T#3"
+      id: energy_delivered_t3
+    energy_delivered_tariff4:
+      name: "Energy Delivered T#4"
+      id: energy_delivered_t4
+    energy_returned_lux:
+      name: "Energy Returned Total"
+      id: energy_returned
+    power_delivered_l1:
+      name: "Power Delivered L1"
+      id: power_delivered_l1
+    voltage_l1:
+      name: "Voltage L1"
+      id: voltage_l1
+    current_l1:
+      name: "Current L1"
+      id: current_l1
+    electricity_failures:
+      name: "Electricity Failures"
+      entity_category: "diagnostic"
+      icon: mdi:alert
+    electricity_sags_l1:
+      name: "Electricity Sags L1"
+      entity_category: "diagnostic"
+    electricity_swells_l1:
+      name: "Electricity Swells L1"
+      entity_category: "diagnostic"
+
+text_sensor:
+  - platform: dsmr_eso
+    timestamp:
+      name: "Meter Timestamp"
+      id: meter_timestamp_raw
+      entity_category: "diagnostic"
+    identification:
+      name: "DSMR Identification"
+      entity_category: "diagnostic"
+    equipment_id:
+      name: "Equipment Identifier"
+      entity_category: "diagnostic"
+    consumer_msg:
+      name: "Consumer Message"
+      entity_category: "diagnostic"

@@ -1,24 +1,7 @@
-# ESO P1 'Maksimalus' (3F) — full 96-counter package (sensors only).
-# Vendored component: components/dsmr_eso (no external github reference).
-# Include from a device YAML that provides esp8266/esp32, wifi, api, ota, logger.
-# Required substitutions: uart_rx_pin, request_pin (+ optional decryption_key).
-
-external_components:
-  - source:
-      type: local
-      path: components
-    components: [dsmr_eso]
-
-uart:
-  rx_pin: ${uart_rx_pin}
-  baud_rate: 115200
-  rx_buffer_size: 3072
-
-dsmr_eso:
-  id: dsmr_instance
-  request_pin: ${request_pin}
-  request_interval: 10s
-  max_telegram_length: 4096
+# ESO P1 — Maksimalus, 3F — sensor package (sensors only).
+# Maintained at github://Bl00d-B0b/esphome-eso. Pure sensor/text_sensor lists; the consumer device
+# must declare external_components (dsmr_eso), uart and the dsmr_eso hub.
+# Counters in this profile: 90 sensor + 6 text = 96.
 
 sensor:
   - platform: dsmr_eso

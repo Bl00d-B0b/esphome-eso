@@ -1,5 +1,5 @@
-# Example device using the self-contained ESO P1 (Maksimalus) package.
-# Provides the base (board/wifi/api/ota/logger); the package adds the meter sensors.
+# Example device — local self-test of the ESO P1 packages.
+# The packages are sensors-only, so the device provides the component + hub here.
 substitutions:
   name: eso
   uart_rx_pin: D7
@@ -24,5 +24,24 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
 
+# Local component (this repo). Consumers pull it from GitHub instead — see README.
+external_components:
+  - source:
+      type: local
+      path: components
+    components: [dsmr_eso]
+
+uart:
+  rx_pin: ${uart_rx_pin}
+  baud_rate: 115200
+  rx_buffer_size: 3072
+
+dsmr_eso:
+  id: dsmr_instance
+  request_pin: ${request_pin}
+  request_interval: 10s
+  max_telegram_length: 4096
+
+# Pick the profile/phase package to test:
 packages:
-  dsmr: !include packages/dsmr_eso_max.yaml
+  sensors: !include packages/p1_max_3f.yaml
