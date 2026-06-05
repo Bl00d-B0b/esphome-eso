@@ -1,0 +1,9 @@
+# Local scratch (project-local temp; never at C:\ root)
+.tmp/
+
+# ESPHome build artifacts
+.esphome/
+*.bin
+
+# Secrets — never commit
+secrets.yaml

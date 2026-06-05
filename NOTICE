@@ -1,0 +1,28 @@
+esphome-eso — third-party components and attribution
+=====================================================
+
+This repository bundles ("vendors") third-party source so it builds with no
+external GitHub references. Each component keeps its original license below.
+
+1) DSMR parser — components/dsmr_eso/dsmr.h and components/dsmr_eso/dsmr/*
+   Origin : matthijskooijman/arduino-dsmr  (via fork geduxas/arduino-dsmr)
+   Author : Copyright (c) 2015 Matthijs Kooijman <matthijs@stdin.nl>
+   License: MIT (per-file headers retained verbatim)
+
+2) dsmr_eso ESPHome component —
+   components/dsmr_eso/{__init__.py,dsmr_eso.cpp,dsmr_eso.h,sensor.py,text_sensor.py}
+   Origin : geduxas/esphome-dsmr-eso
+   Itself derived from zuidwijk/dsmr (SlimmeLezer) and the ESPHome `dsmr` component.
+   License: NONE DECLARED by upstream as of vendoring date.
+   ==> Bundled here for PRIVATE/LOCAL use. Public redistribution is NOT permitted
+       until the original author grants a license. See README "Publishing".
+
+3) Crypto (AES/GCM) — NOT vendored; pulled by PlatformIO at build time
+   Library: rweather/Crypto @ 0.4.0
+   License: MIT
+
+4) ESPHome — the framework this builds against
+   Origin : esphome/esphome
+   License: MIT (Python) / GPLv3 (parts)
+
+Vendored on 2026-06-05 from upstream main/master branches.
