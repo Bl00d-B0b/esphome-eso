@@ -7,3 +7,5 @@
 
 # Secrets — never commit
 secrets.yaml
+__pycache__/
+*.pyc

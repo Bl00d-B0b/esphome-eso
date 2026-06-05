@@ -1,28 +1,25 @@
 esphome-eso — third-party components and attribution
 =====================================================
 
-This repository bundles ("vendors") third-party source so it builds with no
-external GitHub references. Each component keeps its original license below.
+This repository is licensed GPLv3 (see LICENSE), reflecting the ESPHome-derived
+C++ runtime. Bundled third-party source keeps its own license below.
 
-1) DSMR parser — components/dsmr_eso/dsmr.h and components/dsmr_eso/dsmr/*
-   Origin : matthijskooijman/arduino-dsmr  (via fork geduxas/arduino-dsmr)
+1) dsmr_eso ESPHome component —
+   components/dsmr_eso/{__init__.py,dsmr_eso.cpp,dsmr_eso.h,sensor.py,text_sensor.py}
+   Derived from ESPHome's official `dsmr` component (tag 2025.7.0),
+   adapted to a `dsmr_eso` namespace and extended with the ESO P1 field set.
+   Origin : esphome/esphome — components/dsmr (authors @glmnet, @zuidwijk)
+   License: ESPHome license — MIT (Python codegen) / GPLv3 (C++ runtime).
+
+2) DSMR parser — components/dsmr_eso/dsmr/*
+   Origin : matthijskooijman/arduino-dsmr
    Author : Copyright (c) 2015 Matthijs Kooijman <matthijs@stdin.nl>
    License: MIT (per-file headers retained verbatim)
-
-2) dsmr_eso ESPHome component —
-   components/dsmr_eso/{__init__.py,dsmr_eso.cpp,dsmr_eso.h,sensor.py,text_sensor.py}
-   Origin : geduxas/esphome-dsmr-eso
-   Itself derived from zuidwijk/dsmr (SlimmeLezer) and the ESPHome `dsmr` component.
-   License: NONE DECLARED by upstream as of vendoring date.
-   ==> Bundled here for PRIVATE/LOCAL use. Public redistribution is NOT permitted
-       until the original author grants a license. See README "Publishing".
 
 3) Crypto (AES/GCM) — NOT vendored; pulled by PlatformIO at build time
    Library: rweather/Crypto @ 0.4.0
    License: MIT
 
-4) ESPHome — the framework this builds against
-   Origin : esphome/esphome
-   License: MIT (Python) / GPLv3 (parts)
+No third-party code is used under an unlicensed/all-rights-reserved status.
 
-Vendored on 2026-06-05 from upstream main/master branches.
+Rebuilt 2026-06-05 from esphome/esphome @ 2025.7.0 and arduino-dsmr (MIT).

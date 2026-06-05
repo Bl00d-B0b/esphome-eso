@@ -10,7 +10,6 @@
 #include "esphome/core/defines.h"
 
 // don't include <dsmr.h> because it puts everything in global namespace
-// Vendored locally (MIT, Matthijs Kooijman arduino-dsmr) — relative include, no external lib.
 #include "dsmr/parser.h"
 #include "dsmr/fields.h"
 
@@ -48,9 +47,9 @@ using namespace ::dsmr::fields;
 using MyData = ::dsmr::ParsedData<DSMR_TEXT_SENSOR_LIST(DSMR_DATA_SENSOR, DSMR_COMMA)
                                       DSMR_BOTH DSMR_SENSOR_LIST(DSMR_DATA_SENSOR, DSMR_COMMA)>;
 
-class Dsmr_eso : public Component, public uart::UARTDevice {
+class Dsmr : public Component, public uart::UARTDevice {
  public:
-  Dsmr_eso(uart::UARTComponent *uart, bool crc_check) : uart::UARTDevice(uart), crc_check_(crc_check) {}
+  Dsmr(uart::UARTComponent *uart, bool crc_check) : uart::UARTDevice(uart), crc_check_(crc_check) {}
 
   void setup() override;
   void loop() override;
@@ -69,7 +68,6 @@ class Dsmr_eso : public Component, public uart::UARTDevice {
     DSMR_TEXT_SENSOR_LIST(DSMR_PUBLISH_TEXT_SENSOR, )
   };
 
-  void dump_telemetry();
   void dump_config() override;
 
   void set_decryption_key(const std::string &decryption_key);
@@ -86,6 +84,9 @@ class Dsmr_eso : public Component, public uart::UARTDevice {
 #define DSMR_SET_TEXT_SENSOR(s) \
   void set_##s(text_sensor::TextSensor *sensor) { s_##s##_ = sensor; }
   DSMR_TEXT_SENSOR_LIST(DSMR_SET_TEXT_SENSOR, )
+
+  // handled outside dsmr
+  void set_telegram(text_sensor::TextSensor *sensor) { s_telegram_ = sensor; }
 
  protected:
   void receive_telegram_();
@@ -126,6 +127,9 @@ class Dsmr_eso : public Component, public uart::UARTDevice {
   bool header_found_{false};
   bool footer_found_{false};
 
+  // handled outside dsmr
+  text_sensor::TextSensor *s_telegram_{nullptr};
+
 // Sensor member pointers
 #define DSMR_DECLARE_SENSOR(s) sensor::Sensor *s_##s##_{nullptr};
   DSMR_SENSOR_LIST(DSMR_DECLARE_SENSOR, )
@@ -136,7 +140,7 @@ class Dsmr_eso : public Component, public uart::UARTDevice {
   std::vector<uint8_t> decryption_key_{};
   bool crc_check_;
 };
-}  // namespace dsmr
+}  // namespace dsmr_eso
 }  // namespace esphome
 
 #endif  // USE_ARDUINO

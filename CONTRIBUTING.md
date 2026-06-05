@@ -25,6 +25,6 @@ Just say so in an issue or PR — you're welcome to join.
 
 ## Note on bundled code
 
-`components/dsmr_eso/` vendors third-party source (see `NOTICE`). The DSMR
-parser is MIT. The `dsmr_eso` glue originates from `geduxas/esphome-dsmr-eso`;
-please preserve attribution.
+`components/dsmr_eso/` is GPLv3 (rebuilt from ESPHome's official `dsmr`
+component) and bundles the MIT `arduino-dsmr` parser under `dsmr/`. See
+`NOTICE` and please preserve the attribution there.

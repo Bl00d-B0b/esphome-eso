@@ -1,12 +1,8 @@
-import esphome.codegen as cg
-import esphome.config_validation as cv
 from esphome import pins
+import esphome.codegen as cg
 from esphome.components import uart
-from esphome.const import (
-    CONF_ID,
-    CONF_UART_ID,
-    CONF_RECEIVE_TIMEOUT,
-)
+import esphome.config_validation as cv
+from esphome.const import CONF_ID, CONF_RECEIVE_TIMEOUT, CONF_UART_ID
 
 CODEOWNERS = ["@glmnet", "@zuidwijk"]
 
@@ -26,7 +22,7 @@ CONF_REQUEST_PIN = "request_pin"
 
 # Hack to prevent compile error due to ambiguity with lib namespace
 dsmr_ns = cg.esphome_ns.namespace("esphome::dsmr_eso")
-Dsmr_eso = dsmr_ns.class_("Dsmr_eso", cg.Component, uart.UARTDevice)
+Dsmr = dsmr_ns.class_("Dsmr", cg.Component, uart.UARTDevice)
 
 
 def _validate_key(value):
@@ -50,7 +46,7 @@ def _validate_key(value):
 CONFIG_SCHEMA = cv.All(
     cv.Schema(
         {
-            cv.GenerateID(): cv.declare_id(Dsmr_eso),
+            cv.GenerateID(): cv.declare_id(Dsmr),
             cv.Optional(CONF_DECRYPTION_KEY): _validate_key,
             cv.Optional(CONF_CRC_CHECK, default=True): cv.boolean,
             cv.Optional(CONF_GAS_MBUS_ID, default=1): cv.int_,
@@ -86,6 +82,7 @@ async def to_code(config):
     cg.add_build_flag("-DDSMR_GAS_MBUS_ID=" + str(config[CONF_GAS_MBUS_ID]))
     cg.add_build_flag("-DDSMR_WATER_MBUS_ID=" + str(config[CONF_WATER_MBUS_ID]))
 
-    # DSMR Parser — vendored locally under components/dsmr_eso/dsmr/ (MIT). No external reference.
-    # Crypto — AES/GCM for encrypted telegrams (PlatformIO registry, MIT).
+    # DSMR parser is vendored locally under dsmr/ (MIT). No external lib.
+
+    # Crypto
     cg.add_library("rweather/Crypto", "0.4.0")

@@ -12,14 +12,14 @@ namespace dsmr_eso {
 
 static const char *const TAG = "dsmr_eso";
 
-void Dsmr_eso::setup() {
+void Dsmr::setup() {
   this->telegram_ = new char[this->max_telegram_len_];  // NOLINT
   if (this->request_pin_ != nullptr) {
     this->request_pin_->setup();
   }
 }
 
-void Dsmr_eso::loop() {
+void Dsmr::loop() {
   if (this->ready_to_request_data_()) {
     if (this->decryption_key_.empty()) {
       this->receive_telegram_();
@@ -29,7 +29,7 @@ void Dsmr_eso::loop() {
   }
 }
 
-bool Dsmr_eso::ready_to_request_data_() {
+bool Dsmr::ready_to_request_data_() {
   // When using a request pin, then wait for the next request interval.
   if (this->request_pin_ != nullptr) {
     if (!this->requesting_data_ && this->request_interval_reached_()) {
@@ -50,16 +50,16 @@ bool Dsmr_eso::ready_to_request_data_() {
   return this->requesting_data_;
 }
 
-bool Dsmr_eso::request_interval_reached_() {
+bool Dsmr::request_interval_reached_() {
   if (this->last_request_time_ == 0) {
     return true;
   }
   return millis() - this->last_request_time_ > this->request_interval_;
 }
 
-bool Dsmr_eso::receive_timeout_reached_() { return millis() - this->last_read_time_ > this->receive_timeout_; }
+bool Dsmr::receive_timeout_reached_() { return millis() - this->last_read_time_ > this->receive_timeout_; }
 
-bool Dsmr_eso::available_within_timeout_() {
+bool Dsmr::available_within_timeout_() {
   // Data are available for reading on the UART bus?
   // Then we can start reading right away.
   if (this->available()) {
@@ -96,7 +96,7 @@ bool Dsmr_eso::available_within_timeout_() {
   return false;
 }
 
-void Dsmr_eso::start_requesting_data_() {
+void Dsmr::start_requesting_data_() {
   if (!this->requesting_data_) {
     if (this->request_pin_ != nullptr) {
       ESP_LOGV(TAG, "Start requesting data from P1 port");
@@ -109,7 +109,7 @@ void Dsmr_eso::start_requesting_data_() {
   }
 }
 
-void Dsmr_eso::stop_requesting_data_() {
+void Dsmr::stop_requesting_data_() {
   if (this->requesting_data_) {
     if (this->request_pin_ != nullptr) {
       ESP_LOGV(TAG, "Stop requesting data from P1 port");
@@ -124,7 +124,7 @@ void Dsmr_eso::stop_requesting_data_() {
   }
 }
 
-void Dsmr_eso::reset_telegram_() {
+void Dsmr::reset_telegram_() {
   this->header_found_ = false;
   this->footer_found_ = false;
   this->bytes_read_ = 0;
@@ -133,7 +133,7 @@ void Dsmr_eso::reset_telegram_() {
   this->last_read_time_ = 0;
 }
 
-void Dsmr_eso::receive_telegram_() {
+void Dsmr::receive_telegram_() {
   while (this->available_within_timeout_()) {
     const char c = this->read();
 
@@ -187,7 +187,7 @@ void Dsmr_eso::receive_telegram_() {
   }
 }
 
-void Dsmr_eso::receive_encrypted_telegram_() {
+void Dsmr::receive_encrypted_telegram_() {
   while (this->available_within_timeout_()) {
     const char c = this->read();
 
@@ -252,10 +252,11 @@ void Dsmr_eso::receive_encrypted_telegram_() {
   }
 }
 
-bool Dsmr_eso::parse_telegram() {
+bool Dsmr::parse_telegram() {
   MyData data;
   ESP_LOGV(TAG, "Trying to parse telegram");
   this->stop_requesting_data_();
+
   ::dsmr::ParseResult<void> res =
       ::dsmr::P1Parser::parse(&data, this->telegram_, this->bytes_read_, false,
                               this->crc_check_);  // Parse telegram according to data definition. Ignore unknown values.
@@ -267,22 +268,21 @@ bool Dsmr_eso::parse_telegram() {
   } else {
     this->status_clear_warning();
     this->publish_sensors(data);
+
+    // publish the telegram, after publishing the sensors so it can also trigger action based on latest values
+    if (this->s_telegram_ != nullptr) {
+      this->s_telegram_->publish_state(std::string(this->telegram_, this->bytes_read_));
+    }
     return true;
   }
 }
 
-void Dsmr_eso::dump_telemetry() {
-  char * token = strtok(this->telegram_,"\r\n");
-  while(token){
-    ESP_LOGW(TAG, "%s", token);
-    token = strtok(NULL,"\r\n");
-  }
-}
-
-void Dsmr_eso::dump_config() {
-  ESP_LOGCONFIG(TAG, "DSMR_eso:");
-  ESP_LOGCONFIG(TAG, "  Max telegram length: %d", this->max_telegram_len_);
-  ESP_LOGCONFIG(TAG, "  Receive timeout: %.1fs", this->receive_timeout_ / 1e3f);
+void Dsmr::dump_config() {
+  ESP_LOGCONFIG(TAG,
+                "DSMR:\n"
+                "  Max telegram length: %d\n"
+                "  Receive timeout: %.1fs",
+                this->max_telegram_len_, this->receive_timeout_ / 1e3f);
   if (this->request_pin_ != nullptr) {
     LOG_PIN("  Request Pin: ", this->request_pin_);
   }
@@ -297,8 +297,8 @@ void Dsmr_eso::dump_config() {
   DSMR_TEXT_SENSOR_LIST(DSMR_LOG_TEXT_SENSOR, )
 }
 
-void Dsmr_eso::set_decryption_key(const std::string &decryption_key) {
-  if (decryption_key.length() == 0) {
+void Dsmr::set_decryption_key(const std::string &decryption_key) {
+  if (decryption_key.empty()) {
     ESP_LOGI(TAG, "Disabling decryption");
     this->decryption_key_.clear();
     if (this->crypt_telegram_ != nullptr) {

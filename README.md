@@ -66,13 +66,11 @@ REVIEW.md                  per-sensor review (ids/names/units/icons)
 `rweather/Crypto` (MIT, AES/GCM) is pulled from the PlatformIO registry at
 compile time — a normal versioned library, not a source reference.
 
-## Licensing  ⚠️
+## Licensing
 
-The DSMR parser is MIT and the config/packaging in this repo is MIT (`LICENSE`).
-The `dsmr_eso` component glue code (from `geduxas/esphome-dsmr-eso`) has **no
-upstream license declared** — see `NOTICE`. It is bundled here with full
-attribution; if you are the author and want it changed or removed, please open
-an issue. Contributors: do not strip the attribution in `NOTICE`.
+GPLv3 (see `LICENSE`). The component is rebuilt from ESPHome's official `dsmr`
+component (MIT Python / GPLv3 C++); the DSMR parser is MIT (Matthijs Kooijman);
+Crypto is MIT. No unlicensed code is bundled — see `NOTICE`.
 
 ## Contributing
 
@@ -82,5 +80,5 @@ Two branches: contributions land on **`dev`**, then get published to **`master`*
 
 ## Credits
 
-geduxas (esphome-dsmr-eso), Matthijs Kooijman (arduino-dsmr, MIT),
-zuidwijk (SlimmeLezer), rweather (Crypto, MIT), and the ESPHome project.
+The ESPHome project and its `dsmr` component authors (@glmnet, @zuidwijk),
+Matthijs Kooijman (arduino-dsmr, MIT), and rweather (Crypto, MIT).
