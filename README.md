@@ -30,7 +30,7 @@ substitutions:
   request_pin: D5
 
 external_components:
-  - source: github://Bl00d-B0b/esphome-eso@main
+  - source: github://Bl00d-B0b/esphome-eso@master
     components: [dsmr_eso]
 
 uart:
@@ -45,7 +45,7 @@ dsmr_eso:
   max_telegram_length: 4096
 
 packages:
-  sensors: github://Bl00d-B0b/esphome-eso/packages/p1_max_3f.yaml@main
+  sensors: github://Bl00d-B0b/esphome-eso/packages/p1_max_3f.yaml@master
 ```
 
 For an encrypted P1 feed, add `decryption_key:` under `dsmr_eso:`.
@@ -66,12 +66,19 @@ REVIEW.md                  per-sensor review (ids/names/units/icons)
 `rweather/Crypto` (MIT, AES/GCM) is pulled from the PlatformIO registry at
 compile time — a normal versioned library, not a source reference.
 
-## Publishing  ⚠️
+## Licensing  ⚠️
 
+The DSMR parser is MIT and the config/packaging in this repo is MIT (`LICENSE`).
 The `dsmr_eso` component glue code (from `geduxas/esphome-dsmr-eso`) has **no
-upstream license** — see `NOTICE`. Fine for private use; keep this repo
-**private** until the original author grants a license. The DSMR parser (MIT)
-and the config/packaging in this repo (MIT, `LICENSE`) are clear to share.
+upstream license declared** — see `NOTICE`. It is bundled here with full
+attribution; if you are the author and want it changed or removed, please open
+an issue. Contributors: do not strip the attribution in `NOTICE`.
+
+## Contributing
+
+PRs welcome — and if you'd like to help maintain, you're welcome to join.
+Two branches: contributions land on **`dev`**, then get published to **`master`**
+(which devices reference). See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Credits
 
