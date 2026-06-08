@@ -109,10 +109,9 @@ sensor:
     current_l3:
       name: "Current L3"
       id: current_l3
-    # 1-0:14.7.0 — Instantaneous net frequency; any phase
-    frequency:
-      name: "Frequency"
-      id: frequency
+    # 1-0:14.7.0 — Frequency OMITTED: standard dsmr_parser expects kHz/int-Hz but
+    #   ESO sends float-Hz (e.g. 49.9*Hz), which aborts the whole telegram.
+    #   Re-add once the parser accepts float-Hz (PR to esphome-libs/dsmr_parser).
     # 1-0:13.7.0 — Instantaneous Power factor (+A/+VA)
     power_factor:
       name: "Power Factor"
